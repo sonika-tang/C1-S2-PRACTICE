@@ -23,9 +23,11 @@
     </style>
 </head>
 <body>
+    <!-- Exercise 1 -->
+    <h2>Task Manager</h2>
     <div id="taskDisplay"></div>
     <script>
-                function displayTasks(tasks){
+        function displayTasks(tasks){
             const container = document.getElementById("taskDisplay");
             container.innerHTML = "";
 
@@ -43,8 +45,42 @@
                 {description: "Task3", priority: 1}]
         
         displayTasks(tasks);
-
     </script>
+
+    <!-- Exercise 2 -->
+    <label for="inputTask">Task:</label><br>
+    <input type="text" id="inputTask" placeholder="Task">
+    <br><br>
     
+    <label for="inputTag">Tag:</label><br>
+    <select name="inputTag" id="inputTag">
+        <option value="1">Important</option>
+        <option value="0">Unimportant</option>
+    </select>
+    <br><br>
+    <button id="add-button" type="button" onclick="newTask()">Add task</button>
+    <script>
+        function newTask(){
+            //Get the input values
+            const taskDescription = document.getElementById("inputTask").value;
+            const taskPriority = parseInt(document.getElementById("inputTag").value);
+
+            //Create a new task object
+            const newTask = {
+                description: taskDescription,
+                priority: taskPriority
+            };
+
+            //Add the new task to the tasks array
+            tasks.push(newTask);
+
+            //Update the DOM by calling displayTasks
+            displayTasks(tasks);
+
+            // Clear the input fields after adding the task
+            document.getElementById("inputTask").value = "";
+            document.getElementById("inputTag").value = "1";
+        }
+    </script>
 </body>
 </html>
