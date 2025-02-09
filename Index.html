@@ -20,6 +20,10 @@
         .gray{
             background-color: gray;
         }
+        button {
+            margin: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -81,6 +85,26 @@
             document.getElementById("inputTask").value = "";
             document.getElementById("inputTag").value = "1";
         }
+    </script>
+
+    <!-- Exercise 3 -->
+    <div class="buttons">
+        <button id="showImportant">Important Tasks</button><br>
+        <button id="showNotImportant">Not Important Tasks</button><br>
+        <button id="showAll">Show All</button>
+    </div>
+    <script>
+        document.getElementById("showImportant").addEventListener("click", function () {
+            displayTasks(tasks.filter(task => task.priority === 1));
+        });
+
+        document.getElementById("showNotImportant").addEventListener("click", function () {
+            displayTasks(tasks.filter(task => task.priority === 0));
+        });
+
+        document.getElementById("showAll").addEventListener("click", function () {
+            displayTasks(tasks);
+        });
     </script>
 </body>
 </html>
